@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol</title>
+</head>
+<body>
+    <h1>Kayıt Ol</h1>
+    <form id="registerForm">
+        <input type="text" name="name" placeholder="Ad Soyad" required><br>
+        <input type="email" name="email" placeholder="E-posta" required><br>
+        <input type="password" name="password" placeholder="Şifre" required><br>
+        <input type="password" name="passwordAgain" placeholder="Şifre Tekrar" required><br>
+        <button type="submit">Kayıt Ol</button>
+    </form>
+
+    <p id="errorMessage" style="color:red;"></p>
+
+    <script>
+        document.getElementById("registerForm").addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = e.target.name.value;
+            const email = e.target.email.value;
+            const password = e.target.password.value;
+            const passwordAgain = e.target.passwordAgain.value;
+
+            if (password !== passwordAgain) {
+                document.getElementById("errorMessage").innerText = 'Şifreler eşleşmiyor!';
+                return;
+            }
+
+            try {
+                const res = await fetch('/users',  {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        password,
+                        passwordAgain
+                    }),
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    document.getElementById("errorMessage").innerText = data.message || "Bir hata oluştu.";
+                    return;
+                }
+
+                alert("Kayıt başarılı!");
+                window.location.href = "/login";
+            } catch (err) {
+                document.getElementById("errorMessage").innerText = "Sunucuya bağlanılamadı. Daha sonra tekrar deneyiniz.";
+            }
+        });
+    </script>
+</body>
+</html>
