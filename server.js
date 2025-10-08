@@ -1,10 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const mongoose = require('mongoose');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const path = require('path');
+const connectDb = require('./config/db');
+connectDb();
 dotenv.config();
 const PORT = process.env.PORT || 5000;
 
