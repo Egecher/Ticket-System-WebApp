@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 const userRouter = require('./routes/user.routes');
-const authRouter = require('./controllers/auth.routes');
+const authRouter = require('./routes/auth.routes');
 
 app.use(express.urlencoded({ extended: true }));
 
