@@ -4,10 +4,10 @@ const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const path = require('path');
-const connectDb = require('./config/db');
-connectDb();
-dotenv.config();
 const PORT = process.env.PORT || 5000;
+const connectDb = require('./config/db');
+dotenv.config();
+connectDb();
 
 const app = express();
 app.use(bodyParser.json());
