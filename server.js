@@ -21,10 +21,13 @@ app.get('/', (req, res) => {
 });
 
 const userRouter = require('./routes/user.routes');
+const authRouter = require('./controllers/auth.routes');
 
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/users', userRouter);
+app.post('/register', authRouter);
+app.post('/login', authRouter);
 
 app.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'register.html'));
