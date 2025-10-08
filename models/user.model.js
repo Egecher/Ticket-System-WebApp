@@ -1,27 +1,9 @@
-const fs = require('fs');
-const path = require('path');
-const dataPath = path.join(__dirname, '../data/Users.json');
+const mongoose = require('mongoose');
 
-function getUsers() {
-    const data = fs.readFileSync(dataPath, 'utf-8');
-    return JSON.parse(data);
-}
+const userSchema = new mongoose.Schema({
+    name: String,
+    email: { type: String, unique: true },
+    password: String
+});
 
-function getUserById(id) {
-    const users = getUsers();
-    return users.find(u => u.id === id);
-}
-
-function addUser(user) {
-    const users = getUsers();
-    users.push(user);
-    fs.writeFileSync(dataPath, JSON.stringify(users, null, 2));
-}
-
-function deleteUserById(id) {
-    let users = getUsers();
-    users = users.filter(u => u.id !== id);
-    fs.writeFileSync(dataPath, JSON.stringify(users, null, 2));
-}
-
-module.exports = { getUsers, getUserById, addUser, deleteUserById };
+module.exports = mongoose.model('User', userSchema);
