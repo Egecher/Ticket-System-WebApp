@@ -20,11 +20,19 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-app.get('/new', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'new.html'));
-});
+const userRouter = require('./routes/user.routes');
 
 app.use(express.urlencoded({ extended: true }));
+
+app.use('/users', userRouter);
+
+app.get('/register', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'register.html'));
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'login.html'));
+});
 
 app.post('/new', (req, res) => {
     const { name, email, title, description } = req.body;
