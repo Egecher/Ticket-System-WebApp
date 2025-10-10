@@ -17,6 +17,7 @@
 
     <p id="errorMessage" style="color:red;"></p>
 
+    <script src="/js/main"></script>
     <script>
         document.getElementById("registerForm").addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -32,7 +33,7 @@
             }
 
             try {
-                const res = await fetch('/register',  {
+                const res = await fetch('/api/auth/register',  {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
