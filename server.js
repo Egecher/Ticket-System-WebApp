@@ -10,9 +10,10 @@ connectDb();
 const PORT = process.env.PORT || 5000;
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.json());
 app.use(morgan('dev'));
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -24,11 +25,8 @@ app.get('/', (req, res) => {
 const userRouter = require('./routes/user.routes');
 const authRouter = require('./routes/auth.routes');
 
-app.use(express.urlencoded({ extended: true }));
-
 app.use('/users', userRouter);
-app.post('/register', authRouter);
-app.post('/login', authRouter);
+app.use('/api/auth', authRouter);
 
 app.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'register.html'));
