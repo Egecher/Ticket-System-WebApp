@@ -1,5 +1,6 @@
 const User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
+const SECRET_KEY = process.env.SECRET_KEY;
 
 exports.login = async (req, res) => {
     const { email, password } = req.body;
@@ -8,7 +9,7 @@ exports.login = async (req, res) => {
         if (!user || user.password !== password) {
             return res.status(401).json({ message: 'Email veya şifre hatalı.' });
         }
-        const token = jwt.sign({ email: user.email, id: user._id }, 'gizliAnahtar', { expiresIn: '1h' });
+        const token = jwt.sign({ email: user.email, id: user._id }, SECRET_KEY, { expiresIn: '1h' });
         res.json({ message: 'Giriş başarılı.', token });
     } catch (err) {
         res.status(500).json({ message: 'Sunucu hatası.' });
