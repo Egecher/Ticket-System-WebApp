@@ -1,19 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giriş Yap</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giriş Yap</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #edf2f7, #ffffff);
+      color: #1e293b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.3px;
+    }
+
+    form {
+      background: #ffffffcc;
+      backdrop-filter: blur(6px);
+      padding: 1.3rem;
+      border-radius: 0.9rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+      width: 100%;
+      max-width: 340px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: box-shadow 0.3s ease;
+    }
+
+    form:hover {
+      box-shadow: 0 8px 22px rgba(0,0,0,0.1);
+    }
+
+    input {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.45rem;
+      font-size: 0.9rem;
+      background: #f9fafb;
+      transition: all 0.2s ease;
+    }
+
+    input:focus {
+      border-color: #3b82f6;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+      outline: none;
+    }
+
+    button {
+      background: #3b82f6;
+      color: #fff;
+      border: none;
+      padding: 0.65rem;
+      border-radius: 0.45rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    button:hover {
+      background: #2563eb;
+      box-shadow: 0 3px 10px rgba(37,99,235,0.3);
+    }
+
+    button:active {
+      background: #1d4ed8;
+    }
+
+    #errorMessage {
+      color: #dc2626;
+      font-size: 0.85rem;
+      text-align: center;
+      margin-top: 0.6rem;
+    }
+
+    @media (max-width: 480px) {
+      form {
+        padding: 1rem;
+        max-width: 90%;
+      }
+      h1 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Giriş Yap</h1>
-    <form id="loginForm">
-        <input type="email" name="email" placeholder="E-posta" required><br>
-        <input type="password" name="password" placeholder="Şifre" required><br>
-        <button type="submit">Giriş Yap</button>
-    </form>
+  <h1>Giriş Yap</h1>
+  <form id="loginForm">
+    <input type="email" name="email" placeholder="E-posta" required>
+    <input type="password" name="password" placeholder="Şifre" required>
+    <button type="submit">Giriş Yap</button>
+  </form>
+  <p id="errorMessage"></p>
 
-    <p id="errorMessage" style="color: red;"></p>
 
     <script src="/js/main"></script>
     <script>
