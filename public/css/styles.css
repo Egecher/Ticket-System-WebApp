@@ -1,6 +1,122 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #edf2f7, #ffffff);
+  color: #1e293b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  letter-spacing: 0.3px;
+}
+
+form {
+  background: #ffffffcc;
+  backdrop-filter: blur(6px);
+  padding: 1.3rem;
+  border-radius: 0.9rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: box-shadow 0.3s ease;
+}
+
+form:hover {
+  box-shadow: 0 8px 22px rgba(0,0,0,0.1);
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.45rem;
+  font-size: 0.9rem;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #3b82f6;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+  outline: none;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+button {
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  padding: 0.65rem;
+  border-radius: 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+button:hover {
+  background: #2563eb;
+  box-shadow: 0 3px 10px rgba(37,99,235,0.3);
+}
+
+button:active {
+  background: #1d4ed8;
+}
+
+a {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+p#errorMessage {
+  color: #dc2626;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 0.4rem;
+}
+
+#username {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+@media (max-width: 480px) {
+  form {
+    padding: 1rem;
+    max-width: 90%;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
 }
